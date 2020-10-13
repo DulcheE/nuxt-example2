@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
-import postgresStore from 'postgres-store'
+import postgresStore from '../postgres-store'
 
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
@@ -26,12 +26,12 @@ export default class Todo {
 
   static async generateTable () {
     await postgresStore.client.query(`
-     CREATE TABLE todo (
-       id INT,
-       descrition VARCHAR,
-       finished BOOL
-     )
-   `)
+      CREATE TABLE todo (
+        id INT,
+        descrition VARCHAR,
+        finished BOOL
+      )`
+    )
   }
 
   /**
