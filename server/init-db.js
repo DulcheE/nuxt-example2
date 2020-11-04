@@ -8,5 +8,7 @@ try {
   existingConf = {}
 }
 
-postgresStore.init(existingConf.postgres)
-Todo.generateTable()
+postgresStore.init(existingConf.default.postgres)
+  .then(() => {
+    Todo.generateTable()
+  })
